@@ -83,6 +83,25 @@ La simulacion actual (`MqttDemoSimulation.scala`) realiza:
 | 3 | Publish | Publicacion de mensaje JSON con ID unico |
 | 4 | Check | Validacion de la respuesta recibida |
 
+### Entendiendo el Total de Requests
+
+Cada usuario virtual ejecuta **3 acciones MQTT** (Connect, Subscribe, Publish). Por lo tanto, el total de requests en el reporte es:
+
+```
+Total Requests = Usuarios × Acciones por usuario
+```
+
+**Ejemplo con 5 usuarios:**
+
+| Accion | Requests |
+|--------|----------|
+| Connecting | 5 |
+| Subscribing | 5 |
+| Publishing | 5 |
+| **Total** | **15** |
+
+Esto significa que si configuras `atOnceUsers(5)`, veras 15 requests en el reporte (5 usuarios × 3 acciones).
+
 ### Broker por defecto
 
 ```scala
